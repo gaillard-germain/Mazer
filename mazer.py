@@ -90,7 +90,8 @@ class Mazer:
         for y in range(height):
             for x in range(width):
                 self.maze[(x, y)] = 0
-        start = (1, 1)
+        start = (random.randrange(1, width - 1, 2),
+                 random.randrange(1, height - 1, 2))
         end = None
         current = start
         while current:

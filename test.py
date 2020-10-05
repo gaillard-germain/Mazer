@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# mazer.py
+# test.py
 # Author: Germain GAILLARD <gaillard.germain@gmail.com>
 # Version: 0.1
 # License: MIT
@@ -10,14 +10,20 @@ from mazer import Mazer
 
 
 def main():
-    print("Wecome to Mazer a random maze generator")
-    print("! width and height must be odd !\n")
-    x = input("Enter the maze width : ")
-    y = input("Enter the maze height : ")
-    print("\nGenerating maze...\n")
+    mazer = Mazer()
+    com = ' '
+    print("Welcome to Mazer a random maze generator")
+    print("! width and height must be odd !")
+    while com != 'q':
+        x = input("\nEnter the maze width : ")
+        y = input("Enter the maze height : ")
+        print("\nGenerating maze...\n")
 
-    maze = Mazer().gen(int(x), int(y))
-    maze.show()
+        maze = mazer.gen(int(x), int(y))
+        maze.show()
+        print("\nPress RETURN to generate an other one")
+        print("Enter Q to quit\n")
+        com = input(">>> ").lower()
 
 
 if __name__ == "__main__":
