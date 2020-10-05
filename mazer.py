@@ -113,4 +113,6 @@ class Mazer:
                 current = self.pathfinder()
         self.maze[start] = 's'
         self.maze[end] = 'e'
-        return Maze(width, height, self.maze)
+        maze = self.maze.copy()
+        self.maze.clear()
+        return Maze(width, height, maze)
