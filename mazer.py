@@ -77,6 +77,7 @@ class Mazer:
         return None
 
     def check_odd(self, number):
+        """Check if number is a odd number"""
         if not number % 2:
             number += 1
             return number
