@@ -11,20 +11,42 @@ from mazer import Mazer
 
 def main():
     mazer = Mazer()
-    com = ' '
+    com = 'gen'
+    saved = False
     print("Welcome to Mazer a random maze generator")
-    print("! width and height must be odd !")
-    while com != 'q':
-        x = input("\nEnter the maze width : ")
-        y = input("Enter the maze height : ")
-        print("\nGenerating maze...\n")
+    print("! width and height must are odd numbers!\n")
+    while True:
+        if com == 'quit':
+            break
+        elif com == 'gen':
+            x = input("Enter the maze width : ")
+            y = input("Enter the maze height : ")
+            print("\nGenerating maze...\n")
 
-        maze = mazer.gen(int(x), int(y))
-        maze.show()
-        print("\nPress RETURN to generate an other one")
-        print("Enter Q to quit\n")
-        com = input(">>> ").lower()
+            maze = mazer.gen(int(x), int(y))
+            maze.show()
+            saved = False
 
+            print("\nEnter save to save the maze in a .txt file")
+            print("Enter gen to generate an other one")
+            print("Enter quit to quit\n")
+            com = input(">>> ").lower()
+        elif com == 'save':
+            if saved:
+                print("\nmaze already saved !\n")
+            else:
+                maze.export_txt()
+                print("\nMaze saved as maze.txt")
+                print("\nEnter gen to generate an other one")
+                print("Enter quit to quit\n")
+                saved = True
+            com = input(">>> ").lower()
+        else:
+            print("\nWrong entry ! Please enter one of the command below:")
+            print("Enter save to save the maze in a .txt file")
+            print("Enter gen to generate an other one")
+            print("Enter quit to quit\n")
+            com = input(">>> ").lower()
 
 if __name__ == "__main__":
     main()

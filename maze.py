@@ -41,3 +41,13 @@ class Maze:
                 print(line)
                 line = ''
         print('     ')
+
+    def export_txt(self):
+        """Save the maze in a txt file"""
+        with open("maze.txt", "w") as file:
+            line = ''
+            for coord, value in self.maze.items():
+                line += str(value)
+                if coord[0] / self.square_size == self.width - 1:
+                    file.write(line + '\n')
+                    line = ''
