@@ -81,6 +81,9 @@ class Mazer:
         if not number % 2:
             number += 1
             return number
+        elif number == 1:
+            number += 2
+            return number
         else:
             return number
 

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+body {
+  font-family: 'Comfortaa', cursive;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  color: grey;
+  font-size: 2.5em;
+}
+
+#instruction {
+  font-size: 1.2em;
+}
+
+form {
+  display: flex;
+  margin: 1em;
+  padding: 1em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+label {
+  margin: 0.5em 0 0.2em 0;
+  padding: 0.2em;
+  color: darkgrey;
+  width: 15%;
+  border: solid 1px white;
+  border-radius: 5px;
+}
+
+input {
+  width: 15%;
+}
+
+#button {
+  margin-top: 1em;
+}
+
+#maze {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+}
+
+.wall {
+  width: 1em;
+  height: 1em;
+  background-color: black;
+}
+
+.corridor {
+  width: 1em;
+  height: 1em;
+  background-color: white;
+}

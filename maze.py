@@ -20,8 +20,8 @@ class Maze:
         new_maze = {}
         for coord, char in self.maze.items():
             x, y = coord
-            x = (x / self.square_size) * size
-            y = (y / self.square_size) * size
+            x = int(x / self.square_size) * size
+            y = int(y / self.square_size) * size
             new_maze[(x, y)] = char
         self.square_size = size
         self.maze = new_maze
