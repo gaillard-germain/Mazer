@@ -13,17 +13,14 @@ mazer = Mazer()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    width = request.args.get('width')
-    height = request.args.get('height')
-    maze = mazer.gen(31, 31)
-    maze.set_square(10)
-    if width and height:
-        if width.isdigit() and height.isdigit():
-            maze = mazer.gen(int(width), int(height))
-            maze.set_square(10)
+    if request.method == 'GET':
+        width = request.args.get('width', '31')
+        height = request.args.get('height', '31')
+        maze = mazer.gen(int(width), int(height))
+        maze.set_square(10)
     return render_template('index.html', square_x = maze.square_x,
-                           square_y = maze.square_y, width = maze.width,
-                           height = maze.height, maze = maze.maze)
+                           square_y = maze.square_y, maze_width = maze.width,
+                           maze_height = maze.height, maze = maze.maze)
 
 
 if __name__ == '__main__':
