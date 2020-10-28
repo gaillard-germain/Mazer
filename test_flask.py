@@ -13,19 +13,17 @@ mazer = Mazer()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    lines = []
     width = request.args.get('width')
     height = request.args.get('height')
+    maze = mazer.gen(31, 31)
+    maze.set_square(10)
     if width and height:
         if width.isdigit() and height.isdigit():
             maze = mazer.gen(int(width), int(height))
-            line = []
-            for coord, value in maze.maze.items():
-                line.append(str(value))
-                if coord[0] / maze.square_size == maze.width - 1:
-                    lines.append(line)
-                    line = []
-    return render_template('index.html', lines = lines)
+            maze.set_square(10)
+    return render_template('index.html', square_x = maze.square_x,
+                           square_y = maze.square_y, width = maze.width,
+                           height = maze.height, maze = maze.maze)
 
 
 if __name__ == '__main__':

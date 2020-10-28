@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% block head %}
     <meta charset="utf-8" />
-    <title>{% block title %}Mazer{% endblock %}</title>
+    <title>MAZER</title>
+    <meta name="description" content="A page to show a randomly generated labyrinth">
+    <meta name="author" content="Germain Gaillard">
+    <meta name="keywords" content="labyrinth, maze, random">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
-    {% endblock %}
   </head>
   <body>
-    <h1>{{self.title()}}</h1>
-    <p>Page de test pour mazer</p>
+    <h1>MAZER</h1>
+    <p>Page de test pour Mazer</p>
     <form action="" method="get">
-      <p id="instruction">Entrer les dimensions du labyrinthe</p>
+      <p>Entrer les dimensions du labyrinthe</p>
       <label for="width">Largeur</label>
-      <input type="text" name="width" placeholder="0"/>
+      <div class="entry">
+        <input type="text" name="width" placeholder="{{ square_x }}"/>
+        <p>Cases</p>
+      </div>
       <label for="height">Hauteur</label>
-      <input type="text" name="height" placeholder="0"/>
+      <div class="entry">
+        <input type="text" name="height" placeholder="{{ square_y }}"/>
+        <p>Cases</p>
+      </div>
       <input id="button" type="submit" value="Générer" />
     </form>
-    <div id="maze">
-      {% for line in lines %}
-      <div class="line">
-        {% for character in line %}
-          {% if character == 'w' %}
-            <div class="wall"></div>
-          {% else %}
-            <div class="corridor"></div>
-          {% endif %}
-        {% endfor %}
-      </div>
+    <svg id="maze" width="{{ width }}" height="{{ height }}">
+      {% for coord, value in maze.items() %}
+        {% if value == 'w' %}
+            <rect class="wall" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
+        {% else %}
+            <rect class="corridor" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
+        {% endif %}
       {% endfor %}
-    </div>
+    </svg>
   </body>
 </html>

@@ -11,14 +11,10 @@ h1 {
   font-size: 2.5em;
 }
 
-#instruction {
-  font-size: 1.2em;
-}
-
 form {
-  display: flex;
   margin: 1em;
   padding: 1em;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -30,40 +26,40 @@ label {
   margin: 0.5em 0 0.2em 0;
   padding: 0.2em;
   color: darkgrey;
-  width: 15%;
-  border: solid 1px white;
+  width: 10em;
   border-radius: 5px;
+  background-color: #e8e8e8;
 }
 
-input {
-  width: 15%;
+.entry {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.entry input {
+  width: 3em;
+}
+
+.entry p {
+  font-style: oblique;
+  font-size: 0.8em;
 }
 
 #button {
   margin-top: 1em;
+  font-family: 'Comfortaa', cursive;
+  font-size: 1em;
 }
 
 #maze {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin: 1em;
 }
 
-.line {
-  display: flex;
-  flex-direction: row;
-}
-
 .wall {
-  width: 1em;
-  height: 1em;
-  background-color: black;
+  fill: black;
 }
 
 .corridor {
-  width: 1em;
-  height: 1em;
-  background-color: white;
+  fill: white;
 }

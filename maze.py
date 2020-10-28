@@ -12,12 +12,16 @@ class Maze:
     def __init__(self, width, height, maze):
         self.width = width
         self.height = height
-        self.maze = maze
+        self.square_x = width
+        self.square_y = height
         self.square_size = 1
+        self.maze = maze
 
     def set_square(self, size):
         """Change the size of the squares, so the coords in the dict"""
         new_maze = {}
+        self.width = self.square_x * size
+        self.height = self.square_y * size
         for coord, char in self.maze.items():
             x, y = coord
             x = int(x / self.square_size) * size
