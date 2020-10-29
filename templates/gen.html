@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block maze %}
+<svg id="maze" width="{{ maze_width }}" height="{{ maze_height }}">
+  {% for coord, value in maze.items() %}
+    {% if value == 'w' %}
+        <rect class="wall" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
+    {% else %}
+        <rect class="corridor" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
+    {% endif %}
+  {% endfor %}
+</svg>
+{% endblock %}

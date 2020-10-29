@@ -12,28 +12,21 @@
   <body>
     <h1>MAZER</h1>
     <p>Page de test pour Mazer</p>
-    <form action="" method="get">
+    <form action="" method="post">
       <p>Entrer les dimensions du labyrinthe</p>
       <label for="width">Largeur</label>
       <div class="entry">
-        <input type="number" name="width" value="{{ square_x }}" min="3" max="160" step="2" required/>
+        <input type="number" name="width" value="{{ square_x }}" min="3" max="180" step="2" required/>
         <p>Cases</p>
       </div>
       <label for="height">Hauteur</label>
       <div class="entry">
-        <input type="number" name="height" value="{{ square_y }}" min="3" max="100" step="2" required/>
+        <input type="number" name="height" value="{{ square_y }}" min="3" max="90" step="2" required/>
         <p>Cases</p>
       </div>
       <input id="button" type="submit" value="Générer" />
     </form>
-    <svg id="maze" width="{{ maze_width }}" height="{{ maze_height }}">
-      {% for coord, value in maze.items() %}
-        {% if value == 'w' %}
-            <rect class="wall" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
-        {% else %}
-            <rect class="corridor" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
-        {% endif %}
-      {% endfor %}
-    </svg>
+    {% block maze %}
+    {% endblock %}
   </body>
 </html>
