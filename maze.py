@@ -9,13 +9,14 @@
 
 class Maze:
     """A ramdomly generated maze"""
-    def __init__(self, width, height, maze):
+    def __init__(self, width, height, maze, seed):
         self.width = width
         self.height = height
         self.square_x = width
         self.square_y = height
         self.square_size = 1
         self.maze = maze
+        self.seed = seed
 
     def set_square(self, size):
         """Change the size of the squares, so the coords in the dict"""

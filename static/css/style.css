@@ -31,6 +31,10 @@ label {
   background-color: #e8e8e8;
 }
 
+#seed_input {
+  width: 10em;
+}
+
 .entry {
   display: flex;
   flex-direction: row;

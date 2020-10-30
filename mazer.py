@@ -87,10 +87,12 @@ class Mazer:
         else:
             return number
 
-    def gen(self, width, height):
+    def gen(self, width, height, seed = None):
         """Generate the maze"""
         width = self.check_odd(width)
         height = self.check_odd(height)
+        if seed:
+            random.seed(seed)
         for y in range(height):
             for x in range(width):
                 self.maze[(x, y)] = 0
@@ -119,4 +121,4 @@ class Mazer:
         self.maze[end] = 'e'
         maze = self.maze.copy()
         self.maze.clear()
-        return Maze(width, height, maze)
+        return Maze(width, height, maze, seed)

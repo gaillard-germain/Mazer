@@ -13,20 +13,25 @@
     <h1>MAZER</h1>
     <p>Page de test pour Mazer</p>
     <form action="" method="get">
-      <p>Entrer les dimensions du labyrinthe</p>
+      <p>Entrer les attributs du labyrinthe</p>
+      <label for="seed">Graine</label>
+      <input id="seed_input" type="text" name="seed" value="{{ maze.seed }}"/>
       <label for="width">Largeur</label>
       <div class="entry">
-        <input type="number" name="width" value="3" min="3" max="180" step="2" required/>
+        <input type="number" name="width" value="{{ maze.square_x }}" min="3" max="180" step="2" required/>
         <p>Cases</p>
       </div>
       <label for="height">Hauteur</label>
       <div class="entry">
-        <input type="number" name="height" value="3" min="3" max="90" step="2" required/>
+        <input type="number" name="height" value="{{ maze.square_y }}" min="3" max="90" step="2" required/>
         <p>Cases</p>
       </div>
       <input id="button" type="submit" value="Générer" />
     </form>
     <p>{{ maze.square_x }} X {{ maze.square_y }}</p>
+    {% if seed %}
+      <p>Graine = {{ maze.seed }}</p>
+    {% endif %}
     <svg id="maze" width="{{ maze.width }}" height="{{ maze.height }}">
       {% for coord, value in maze.maze.items() %}
         {% if value == 'w' %}
