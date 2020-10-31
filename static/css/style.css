@@ -14,16 +14,36 @@ h1 {
 form {
   margin: 1em;
   padding: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: lightgrey;
   border-radius: 10px;
 }
 
+#attributs {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.text_att {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1em;
+}
+
+.num_att {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1em;
+}
+
 label {
-  margin: 0.5em 0 0.2em 0;
+  margin: 0.5em 0;
   padding: 0.2em;
   color: darkgrey;
   width: 10em;
@@ -31,21 +51,22 @@ label {
   background-color: #e8e8e8;
 }
 
-#seed_input {
+.text_att input {
   width: 10em;
+  margin: 0.2em 0;
 }
 
-.entry {
+.num_input {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.entry input {
+.num_input input {
   width: 3em;
 }
 
-.entry p {
+.num_input p {
   font-style: oblique;
   font-size: 0.8em;
 }

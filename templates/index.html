@@ -14,17 +14,25 @@
     <p>Page de test pour Mazer</p>
     <form action="" method="get">
       <p>Entrer les attributs du labyrinthe</p>
-      <label for="seed">Graine</label>
-      <input id="seed_input" type="text" name="seed" value="{{ maze.seed }}"/>
-      <label for="width">Largeur</label>
-      <div class="entry">
-        <input type="number" name="width" value="{{ maze.square_x }}" min="3" max="180" step="2" required/>
-        <p>Cases</p>
-      </div>
-      <label for="height">Hauteur</label>
-      <div class="entry">
-        <input type="number" name="height" value="{{ maze.square_y }}" min="3" max="90" step="2" required/>
-        <p>Cases</p>
+      <div id="attributs">
+        <div class="text_att">
+          <label for="seed">Graine</label>
+          <input type="text" name="seed" value="{{ maze.seed }}"/>
+        </div>
+        <div class="num_att">
+          <label for="width">Largeur</label>
+          <div class="num_input">
+            <input type="number" name="width" value="{{ maze.square_x }}" min="3" max="180" step="2" required/>
+            <p>Cases</p>
+          </div>
+        </div>
+        <div class="num_att">
+        <label for="height">Hauteur</label>
+          <div class="num_input">
+            <input type="number" name="height" value="{{ maze.square_y }}" min="3" max="90" step="2" required/>
+            <p>Cases</p>
+          </div>
+        </div>
       </div>
       <input id="button" type="submit" value="Générer" />
     </form>
