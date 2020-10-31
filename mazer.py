@@ -107,7 +107,7 @@ class Mazer:
             if self.maze[current] != ' ':
                 self.maze[current] = ' '
             for coord in area:
-                self.maze[coord] = 'w'
+                self.maze[coord] = '#'
             if squares:
                 choosen = squares.pop(random.randint(0, len(squares) - 1))
                 doorway = self.opening(current, choosen)

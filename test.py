@@ -14,25 +14,32 @@ def main():
     com = 'gen'
     saved = False
     print("Welcome to Mazer a random maze generator")
-    print("! width and height must are odd numbers !\n")
+    print("! width and height must be odd numbers !\n")
 
     while True:
         if com == 'quit':
             break
         elif com == 'gen':
-            x = input("Enter the maze width : ")
-            y = input("Enter the maze height : ")
-            if x.isdigit() and y.isdigit():
-                print("\nGenerating maze...\n")
-                maze = mazer.gen(int(x), int(y))
-                maze.show()
-                saved = False
-                print("\nEnter save to save the maze in a .txt file")
-                print("Enter gen to generate an other one")
-                print("Enter quit to quit\n")
-                com = input(">>> ").lower()
-            else:
-                print("\n! width and height must are odd numbers !\n")
+            x, y = (31, 31)
+            while True:
+                try:
+                    x = int(input("Enter maze width (31) : ") or x)
+                    y = int(input("Enter maze height (31) : ") or y)
+                    print(x, y)
+                    if x % 2 == 0 or y % 2 == 0:
+                        raise ValueError()
+                    break
+                except ValueError:
+                    print("\n! width and height must be odd numbers !\n")
+
+            print("\nGenerating maze...\n")
+            maze = mazer.gen(int(x), int(y))
+            maze.show()
+            saved = False
+            print("\nEnter save to save the maze in a .txt file")
+            print("Enter gen to generate an other one")
+            print("Enter quit to quit\n")
+            com = input(">>> ").lower()
         elif com == 'save':
             if saved:
                 print("\nmaze already saved !\n")

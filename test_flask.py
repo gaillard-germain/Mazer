@@ -2,13 +2,16 @@
 # -*- coding:utf-8 -*-
 
 
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 from mazer import Mazer
 
 
 app = Flask(__name__)
-app.debug = True
 mazer = Mazer()
+
+@app.route('/')
+def index():
+    return redirect(url_for('maze_gen'))
 
 @app.route('/mazer')
 def maze_gen():
@@ -21,4 +24,4 @@ def maze_gen():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
