@@ -24,42 +24,28 @@ class Mazer:
     def available(self, current, reach):
         """Yield the reachables squares"""
         x, y = current
-        west = (x - reach, y)
-        north = (x, y - reach)
-        east = (x + reach, y)
-        south = (x, y + reach)
-        if west in self.maze:
-            if self.maze[west] == 0:
-                yield west
-        if north in self.maze:
-            if self.maze[north] == 0:
-                yield north
-        if east in self.maze:
-            if self.maze[east] == 0:
-                yield east
-        if south in self.maze:
-            if self.maze[south] == 0:
-                yield south
+        cardinal = {}
+        cardinal['west'] = (x - reach, y)
+        cardinal['north'] = (x, y - reach)
+        cardinal['east'] = (x + reach, y)
+        cardinal['south'] = (x, y + reach)
+        for key in cardinal:
+            if cardinal[key] in self.maze:
+                if self.maze[cardinal[key]] == 0:
+                    yield cardinal[key]
 
     def diagonal(self, current):
         """Yield the diagonal squares"""
         x, y = current
-        north_west = (x - 1, y - 1)
-        north_east = (x + 1, y - 1)
-        south_east = (x + 1, y + 1)
-        south_west = (x - 1, y + 1)
-        if north_west in self.maze:
-            if self.maze[north_west] == 0:
-                yield north_west
-        if north_east in self.maze:
-            if self.maze[north_east] == 0:
-                yield north_east
-        if south_east in self.maze:
-            if self.maze[south_east] == 0:
-                yield south_east
-        if south_west in self.maze:
-            if self.maze[south_west] == 0:
-                yield south_west
+        cardinal = {}
+        cardinal['north_west'] = (x - 1, y - 1)
+        cardinal['north_east'] = (x + 1, y - 1)
+        cardinal['south_east'] = (x + 1, y + 1)
+        cardinal['south_west'] = (x - 1, y + 1)
+        for key in cardinal:
+            if cardinal[key] in self.maze:
+                if self.maze[cardinal[key]] == 0:
+                    yield cardinal[key]
 
     def opening(self, current, choosen):
         """Return the square between two others"""

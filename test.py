@@ -25,7 +25,6 @@ def main():
                 try:
                     x = int(input("Enter maze width (31) : ") or x)
                     y = int(input("Enter maze height (31) : ") or y)
-                    print(x, y)
                     if x % 2 == 0 or y % 2 == 0:
                         raise ValueError()
                     break
