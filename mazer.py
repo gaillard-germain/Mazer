@@ -55,8 +55,9 @@ class Mazer:
         try:
             width = int(width)
             height = int(height)
-            if width % 2 == 0 or height % 2 == 0:
+            if width % 2 == 0:
                 width += 1
+            if height % 2 == 0:
                 height += 1
             return width, height
         except ValueError:
@@ -72,8 +73,7 @@ class Mazer:
         for y in range(height):
             for x in range(width):
                 self.maze[(x, y)] = 0
-        start = (random.randrange(1, width - 1, 2),
-                 random.randrange(1, height - 1, 2))
+        start = (1, random.randrange(1, height - 1, 2))
         end = None
         current = start
         while current:
@@ -88,7 +88,8 @@ class Mazer:
                 self.maze[doorway] = ' '
                 current = choosen
             else:
-                if not end:
+                print(current)
+                if not end and current[0] == width - 2:
                     end = current
                 current = self.pathfinder()
         self.maze[start] = 's'
