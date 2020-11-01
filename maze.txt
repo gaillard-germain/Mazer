@@ -1,17 +1,17 @@
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-w   w     w w     w   w         w w
-w w w www w w www w www wwwwwww w w
-w w w   w w w w w w     w     w w w
-w w www w w w w w wwwwwww www w w w
-w w     w w w   w w w   w   w w   w
-w wwwwwww w www w w w w www wwwww w
-w w     w   w   w   w w w w w   w w
-w w www wwwww wwwww w w w w w w w w
-w w w w     w w  ew w w w w w w   w
-w w w wwwww w w www w w w w w wwwww
-w w     w w w w w   w w   w w w   w
-w wwwww w w w w w wwwwwww w w w www
-w w   w w w w w w w   w   w   w   w
-w www w w w w w w www w w w wwwww w
-w        sw   w         w         w
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+#############################################
+#   # #   #       # #s  #   #               #
+# # # # # # ##### # ### # # # ############# #
+# #   # # # #     # #   # # # #     #     # #
+# ### # # # # ##### # ##### # # ### ##### # #
+# #   # # # #       # #       # # # #       #
+### ### # # ####### # ######### # # # #######
+#   #   # #     #   #         # #   #       #
+# ### ### ##### # ########### # # ######### #
+#   # # # #   # # #   # #   # #e#           #
+### # # # # ### # ### # # # # ############# #
+#   #   # #     #   #   # # #   #   #   #   #
+# ##### # ######### ### # ##### ### # ### ###
+# #     #         #   #   #     #   #   #   #
+# # ############# ### # ### ##### # ### ### #
+#   #                             #         #
+#############################################

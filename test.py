@@ -20,19 +20,9 @@ def main():
         if com == 'quit':
             break
         elif com == 'gen':
-            x, y = (31, 31)
-            while True:
-                try:
-                    x = int(input("Enter maze width (31) : ") or x)
-                    y = int(input("Enter maze height (31) : ") or y)
-                    if x % 2 == 0 or y % 2 == 0:
-                        raise ValueError()
-                    break
-                except ValueError:
-                    print("\n! width and height must be odd numbers !\n")
-
-            print("\nGenerating maze...\n")
-            maze = mazer.gen(int(x), int(y))
+            x = input("Enter maze width : ")
+            y = input("Enter maze height : ")
+            maze = mazer.gen(x, y)
             maze.show()
             saved = False
             print("\nEnter save to save the maze in a .txt file")

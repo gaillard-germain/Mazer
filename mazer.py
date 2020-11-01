@@ -7,6 +7,7 @@
 # License: MIT
 
 import random
+from math import cos, sin, radians
 from maze import Maze
 
 
@@ -21,31 +22,18 @@ class Mazer:
             if char == request:
                 yield coord
 
-    def available(self, current, reach):
-        """Yield the reachables squares"""
-        x, y = current
-        cardinal = {}
-        cardinal['west'] = (x - reach, y)
-        cardinal['north'] = (x, y - reach)
-        cardinal['east'] = (x + reach, y)
-        cardinal['south'] = (x, y + reach)
-        for key in cardinal:
-            if cardinal[key] in self.maze:
-                if self.maze[cardinal[key]] == 0:
-                    yield cardinal[key]
-
-    def diagonal(self, current):
-        """Yield the diagonal squares"""
-        x, y = current
-        cardinal = {}
-        cardinal['north_west'] = (x - 1, y - 1)
-        cardinal['north_east'] = (x + 1, y - 1)
-        cardinal['south_east'] = (x + 1, y + 1)
-        cardinal['south_west'] = (x - 1, y + 1)
-        for key in cardinal:
-            if cardinal[key] in self.maze:
-                if self.maze[cardinal[key]] == 0:
-                    yield cardinal[key]
+    def get_neighbours(self, current, radius, step):
+        '''yield the squares in radius of the centered one'''
+        x,y = current
+        angle = 0
+        while angle < 360:
+            next_x = x + radius*round(cos(radians(angle)))
+            next_y = y + radius*round(sin(radians(angle)))
+            angle += step
+            coord = ((next_x, next_y))
+            if coord in self.maze:
+                if self.maze[coord] == 0:
+                    yield coord
 
     def opening(self, current, choosen):
         """Return the square between two others"""
@@ -58,25 +46,27 @@ class Mazer:
         corridors = list(self.get_coord(' '))
         corridors.reverse()
         for coord in corridors:
-            if list(self.available(coord, 2)):
+            if list(self.get_neighbours(coord, 2, 90)):
                 return coord
         return None
 
-    def check_odd(self, number):
-        """Check if number is a odd number"""
-        if not number % 2:
-            number += 1
-            return number
-        elif number == 1:
-            number += 2
-            return number
-        else:
-            return number
+    def check_odd(self, width, height):
+        """Check if width and height are odd numbers"""
+        try:
+            width = int(width)
+            height = int(height)
+            if width % 2 == 0 or height % 2 == 0:
+                width += 1
+                height += 1
+            return width, height
+        except ValueError:
+            print('\nUnexpected values for width and height !')
+            print('Generating default maze : 31 x 31\n')
+            return 31, 31
 
     def gen(self, width, height, seed = None):
         """Generate the maze"""
-        width = self.check_odd(width)
-        height = self.check_odd(height)
+        width, height = self.check_odd(width, height)
         if seed:
             random.seed(seed)
         for y in range(height):
@@ -87,12 +77,10 @@ class Mazer:
         end = None
         current = start
         while current:
-            area = list(self.available(current, 1))
-            area += list(self.diagonal(current))
-            squares = list(self.available(current, 2))
+            squares = list(self.get_neighbours(current, 2, 90))
             if self.maze[current] != ' ':
                 self.maze[current] = ' '
-            for coord in area:
+            for coord in list(self.get_neighbours(current, 1, 45)):
                 self.maze[coord] = '#'
             if squares:
                 choosen = squares.pop(random.randint(0, len(squares) - 1))
