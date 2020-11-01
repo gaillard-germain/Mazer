@@ -24,16 +24,13 @@ class Mazer:
 
     def get_neighbours(self, current, radius, step):
         '''yield the squares in radius of the centered one'''
-        x,y = current
         angle = 0
         while angle < 360:
-            next_x = x + radius*round(cos(radians(angle)))
-            next_y = y + radius*round(sin(radians(angle)))
+            coord = (current[0] + radius*round(cos(radians(angle))),
+                     current[1] + radius*round(sin(radians(angle))))
             angle += step
-            coord = ((next_x, next_y))
-            if coord in self.maze:
-                if self.maze[coord] == 0:
-                    yield coord
+            if coord in self.maze and self.maze[coord] == 0:
+                yield coord
 
     def opening(self, current, choosen):
         """Return the square between two others"""
@@ -53,8 +50,7 @@ class Mazer:
     def check_odd(self, width, height):
         """Check if width and height are odd numbers"""
         try:
-            width = int(width)
-            height = int(height)
+            width, height = int(width), int(height)
             if width % 2 == 0:
                 width += 1
             if height % 2 == 0:
@@ -76,15 +72,13 @@ class Mazer:
         current = (random.randrange(1, width - 1, 2),
                    random.randrange(1, height - 1, 2))
         while current:
-            squares = list(self.get_neighbours(current, 2, 90))
-            if self.maze[current] != ' ':
-                self.maze[current] = ' '
+            self.maze[current] = ' '
             for coord in list(self.get_neighbours(current, 1, 45)):
                 self.maze[coord] = '#'
+            squares = list(self.get_neighbours(current, 2, 90))
             if squares:
                 choosen = squares.pop(random.randint(0, len(squares) - 1))
-                doorway = self.opening(current, choosen)
-                self.maze[doorway] = ' '
+                self.maze[self.opening(current, choosen)] = ' '
                 current = choosen
             else:
                 current = self.break_wall()
