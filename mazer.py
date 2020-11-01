@@ -88,7 +88,8 @@ class Mazer:
                 current = choosen
             else:
                 current = self.break_wall()
+        self.maze[(0, random.randrange(1, height - 1, 2))] = 's'
+        self.maze[(width - 1, random.randrange(1, height - 1, 2))] = 'e'
         maze = self.maze.copy()
         self.maze.clear()
-        print(maze)
         return Maze(width, height, maze, seed)
