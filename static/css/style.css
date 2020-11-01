@@ -88,3 +88,7 @@ label {
 .corridor {
   fill: white;
 }
+
+.door {
+  fill: lightblue;
+}

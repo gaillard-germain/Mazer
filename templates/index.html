@@ -44,6 +44,8 @@
       {% for coord, value in maze.maze.items() %}
         {% if value == '#' %}
             <rect class="wall" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
+        {% elif value == 's' or value == 'e' %}
+            <rect class="door" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
         {% else %}
             <rect class="corridor" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
         {% endif %}

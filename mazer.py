@@ -41,7 +41,7 @@ class Mazer:
         a, b = choosen
         return ((x + a) / 2, (y + b) / 2)
 
-    def pathfinder(self):
+    def break_wall(self):
         """Return the last openable wall"""
         corridors = list(self.get_coord(' '))
         corridors.reverse()
@@ -73,9 +73,8 @@ class Mazer:
         for y in range(height):
             for x in range(width):
                 self.maze[(x, y)] = 0
-        start = (1, random.randrange(1, height - 1, 2))
-        end = None
-        current = start
+        current = (random.randrange(1, width - 1, 2),
+                   random.randrange(1, height - 1, 2))
         while current:
             squares = list(self.get_neighbours(current, 2, 90))
             if self.maze[current] != ' ':
@@ -88,12 +87,8 @@ class Mazer:
                 self.maze[doorway] = ' '
                 current = choosen
             else:
-                print(current)
-                if not end and current[0] == width - 2:
-                    end = current
-                current = self.pathfinder()
-        self.maze[start] = 's'
-        self.maze[end] = 'e'
+                current = self.break_wall()
         maze = self.maze.copy()
         self.maze.clear()
+        print(maze)
         return Maze(width, height, maze, seed)
