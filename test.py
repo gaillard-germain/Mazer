@@ -20,9 +20,10 @@ def main():
         if com == 'quit':
             break
         elif com == 'gen':
-            x = input("Enter maze width : ")
-            y = input("Enter maze height : ")
-            maze = mazer.gen(x, y)
+            x = input("Enter maze width (31): ")
+            y = input("Enter maze height (31): ")
+            seed = input("Enter a seed (optional) : ")
+            maze = mazer.gen(x, y, seed)
             maze.show()
             saved = False
             print("\nEnter save to save the maze in a .txt file")

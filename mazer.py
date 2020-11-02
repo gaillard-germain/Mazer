@@ -22,14 +22,14 @@ class Mazer:
             if char == request:
                 yield coord
 
-    def get_neighbours(self, current, radius, step):
+    def get_neighbours(self, current, radius, step, char = 0):
         '''yield the squares in radius of the centered one'''
         angle = 0
         while angle < 360:
             coord = (current[0] + radius*round(cos(radians(angle))),
                      current[1] + radius*round(sin(radians(angle))))
             angle += step
-            if coord in self.maze and self.maze[coord] == 0:
+            if coord in self.maze and self.maze[coord] == char:
                 yield coord
 
     def opening(self, current, choosen):
@@ -39,7 +39,7 @@ class Mazer:
         return ((x + a) / 2, (y + b) / 2)
 
     def break_wall(self):
-        """Return the last openable wall"""
+        """Return the last position where a wall can be openable"""
         corridors = list(self.get_coord(' '))
         corridors.reverse()
         for coord in corridors:
