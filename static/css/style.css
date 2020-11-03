@@ -71,7 +71,7 @@ label {
   font-size: 0.8em;
 }
 
-#button {
+.button {
   margin-top: 1em;
   font-family: 'Comfortaa', cursive;
   font-size: 1em;
@@ -87,4 +87,12 @@ label {
 
 .corridor {
   fill: white;
+}
+
+.path {
+  fill: white;
+}
+
+#show {
+  margin-bottom: 5em;
 }

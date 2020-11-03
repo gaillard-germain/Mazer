@@ -9,6 +9,13 @@
 from mazer import Mazer
 
 
+def command():
+    print("\nEnter solve to see the path to the exit")
+    print("Enter save to save the maze in a .txt file")
+    print("Enter gen to generate an other one")
+    print("Enter quit to quit\n")
+    return input(">>> ").lower()
+
 def main():
     mazer = Mazer()
     com = 'gen'
@@ -26,26 +33,22 @@ def main():
             maze = mazer.gen(x, y, seed)
             maze.show()
             saved = False
-            print("\nEnter save to save the maze in a .txt file")
-            print("Enter gen to generate an other one")
-            print("Enter quit to quit\n")
-            com = input(">>> ").lower()
+            com = command()
+        elif com == 'solve':
+            maze.solve()
+            maze.show()
+            com = command()
         elif com == 'save':
             if saved:
                 print("\nmaze already saved !\n")
             else:
                 maze.export_txt()
-                print("\nMaze saved as maze.txt")
-                print("\nEnter gen to generate an other one")
-                print("Enter quit to quit\n")
                 saved = True
-            com = input(">>> ").lower()
+                print("\nMaze saved as maze.txt")
+            com = command()
         else:
             print("\nWrong entry ! Please enter one of the command below:")
-            print("Enter save to save the maze in a .txt file")
-            print("Enter gen to generate an other one")
-            print("Enter quit to quit\n")
-            com = input(">>> ").lower()
+            com = command()
 
 
 if __name__ == "__main__":

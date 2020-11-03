@@ -9,4 +9,5 @@ You can eventually enter a seed to regen it later.
 console Commands are :  
 - **quit** : to quit the program.  
 - **gen** : to generate another maze.  
+- **solve** : to solve the maze.
 - **save** : to create a txt file of the maze (! the previous will be over-written).  

@@ -23,7 +23,7 @@ class Mazer:
                 yield coord
 
     def get_neighbours(self, current, radius, step, char = 0):
-        '''yield the squares in radius of the centered one'''
+        """yield the squares in radius of the centered one"""
         angle = 0
         while angle < 360:
             coord = (current[0] + radius*round(cos(radians(angle))),

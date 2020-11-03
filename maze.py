@@ -6,6 +6,8 @@
 # Version: 0.1
 # License: MIT
 
+from math import cos, sin, radians
+
 
 class Maze:
     """A ramdomly generated maze"""
@@ -37,6 +39,16 @@ class Maze:
             if char == request:
                 yield coord
 
+    def get_neighbours(self, current, radius, step, char = 0):
+        '''yield the squares in radius of the centered one'''
+        angle = 0
+        while angle < 360:
+            coord = (current[0] + radius*round(cos(radians(angle))),
+                     current[1] + radius*round(sin(radians(angle))))
+            angle += step
+            if coord in self.maze and self.maze[coord] == char:
+                yield coord
+
     def show(self):
         """Display the maze in the console"""
         line = ''
@@ -56,3 +68,32 @@ class Maze:
                 if coord[0] / self.square_size == self.width - 1:
                     file.write(line + '\n')
                     line = ''
+
+    def solve(self):
+        """Solve the maze (added '.' on the path)"""
+        end = next(self.get_coord('e'))
+        self.maze[end] = ' '
+        current = next(self.get_coord('s'))
+        marker = 1
+        while current != end:
+            squares = list(self.get_neighbours(current, 1*self.square_size, 90, ' '))
+            if len(squares) == 1:
+                self.maze[current] = marker
+                current = squares[0]
+            elif len(squares) > 1:
+                marker += 1
+                self.maze[current] = str(marker) + 'x'
+                current = squares[0]
+            elif not squares:
+                self.maze[current] = marker
+                for coord, char in self.maze.items():
+                    if char == marker:
+                        self.maze[coord] = 0
+                current = next(self.get_coord(str(marker) + 'x'))
+                marker -= 1
+        self.maze[end] = '.'
+        for coord, char in self.maze.items():
+            if char == 0:
+                self.maze[coord] = ' '
+            elif char != '#' and char != ' ':
+                self.maze[coord] = '.'
