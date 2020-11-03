@@ -16,6 +16,7 @@ def command():
     print("Enter quit to quit\n")
     return input(">>> ").lower()
 
+
 def main():
     mazer = Mazer()
     com = 'gen'

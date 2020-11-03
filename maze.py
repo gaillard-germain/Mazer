@@ -39,15 +39,17 @@ class Maze:
             if char == request:
                 yield coord
 
-    def get_neighbours(self, current, radius, step, char = 0):
-        '''yield the squares in radius of the centered one'''
+    def get_neighbours(self, current, radius, step, char=0):
+        """return the squares in radius of the centered one"""
+        neighbours = []
         angle = 0
         while angle < 360:
             coord = (current[0] + radius*round(cos(radians(angle))),
                      current[1] + radius*round(sin(radians(angle))))
             angle += step
             if coord in self.maze and self.maze[coord] == char:
-                yield coord
+                neighbours.append(coord)
+        return neighbours
 
     def show(self):
         """Display the maze in the console"""
@@ -57,7 +59,6 @@ class Maze:
             if coord[0] / self.square_size == self.width - 1:
                 print(line)
                 line = ''
-        print('     ')
 
     def export_txt(self):
         """Save the maze in a txt file"""
@@ -71,20 +72,21 @@ class Maze:
 
     def solve(self):
         """Solve the maze (added '.' on the path)"""
+        current = next(self.get_coord('s'))
         end = next(self.get_coord('e'))
         self.maze[end] = ' '
-        current = next(self.get_coord('s'))
         marker = 1
         while current != end:
-            squares = list(self.get_neighbours(current, 1*self.square_size, 90, ' '))
-            if len(squares) == 1:
+            neighbours = self.get_neighbours(current, self.square_size,
+                                             90, ' ')
+            if len(neighbours) == 1:
                 self.maze[current] = marker
-                current = squares[0]
-            elif len(squares) > 1:
+                current = neighbours[0]
+            elif len(neighbours) > 1:
                 marker += 1
                 self.maze[current] = str(marker) + 'x'
-                current = squares[0]
-            elif not squares:
+                current = neighbours[0]
+            elif not neighbours:
                 self.maze[current] = marker
                 for coord, char in self.maze.items():
                     if char == marker:

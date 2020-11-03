@@ -22,15 +22,17 @@ class Mazer:
             if char == request:
                 yield coord
 
-    def get_neighbours(self, current, radius, step, char = 0):
-        """yield the squares in radius of the centered one"""
+    def get_neighbours(self, current, radius, step, char=0):
+        """return the squares in radius of the centered one"""
+        neighbours = []
         angle = 0
         while angle < 360:
             coord = (current[0] + radius*round(cos(radians(angle))),
                      current[1] + radius*round(sin(radians(angle))))
             angle += step
             if coord in self.maze and self.maze[coord] == char:
-                yield coord
+                neighbours.append(coord)
+        return neighbours
 
     def opening(self, current, choosen):
         """Return the square between two others"""
@@ -43,7 +45,7 @@ class Mazer:
         corridors = list(self.get_coord(' '))
         corridors.reverse()
         for coord in corridors:
-            if list(self.get_neighbours(coord, 2, 90)):
+            if self.get_neighbours(coord, 2, 90):
                 return coord
         return None
 
@@ -61,7 +63,7 @@ class Mazer:
             print('Generating default maze : 31 x 31\n')
             return 31, 31
 
-    def gen(self, width, height, seed = None):
+    def gen(self, width, height, seed=None):
         """Generate the maze"""
         width, height = self.check_odd(width, height)
         if seed:
@@ -73,11 +75,12 @@ class Mazer:
                    random.randrange(1, height - 1, 2))
         while current:
             self.maze[current] = ' '
-            for coord in list(self.get_neighbours(current, 1, 45)):
+            for coord in self.get_neighbours(current, 1, 45):
                 self.maze[coord] = '#'
-            squares = list(self.get_neighbours(current, 2, 90))
-            if squares:
-                choosen = squares.pop(random.randint(0, len(squares) - 1))
+            neighbours = self.get_neighbours(current, 2, 90)
+            if neighbours:
+                choosen = neighbours.pop(random.randint(0,
+                                         len(neighbours) - 1))
                 self.maze[self.opening(current, choosen)] = ' '
                 current = choosen
             else:
