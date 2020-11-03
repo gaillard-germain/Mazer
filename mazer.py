@@ -22,14 +22,14 @@ class Mazer:
             if char == request:
                 yield coord
 
-    def get_neighbours(self, current, radius, step, char=0):
+    def get_neighbours(self, current, radius, angle=90, char=0):
         """return the squares in radius of the centered one"""
         neighbours = []
-        angle = 0
-        while angle < 360:
-            coord = (current[0] + radius*round(cos(radians(angle))),
-                     current[1] + radius*round(sin(radians(angle))))
-            angle += step
+        compass = 0
+        while compass < 360:
+            coord = (current[0] + radius*round(cos(radians(compass))),
+                     current[1] + radius*round(sin(radians(compass))))
+            compass += angle
             if coord in self.maze and self.maze[coord] == char:
                 neighbours.append(coord)
         return neighbours
@@ -45,7 +45,7 @@ class Mazer:
         corridors = list(self.get_coord(' '))
         corridors.reverse()
         for coord in corridors:
-            if self.get_neighbours(coord, 2, 90):
+            if self.get_neighbours(coord, 2):
                 return coord
         return None
 
@@ -71,13 +71,12 @@ class Mazer:
         for y in range(height):
             for x in range(width):
                 self.maze[(x, y)] = 0
-        current = (random.randrange(1, width - 1, 2),
-                   random.randrange(1, height - 1, 2))
+        current = (1, 1)
         while current:
             self.maze[current] = ' '
             for coord in self.get_neighbours(current, 1, 45):
                 self.maze[coord] = '#'
-            neighbours = self.get_neighbours(current, 2, 90)
+            neighbours = self.get_neighbours(current, 2)
             if neighbours:
                 choosen = neighbours.pop(random.randint(0,
                                          len(neighbours) - 1))
@@ -85,8 +84,12 @@ class Mazer:
                 current = choosen
             else:
                 current = self.break_wall()
-        self.maze[(0, random.randrange(1, height - 1, 2))] = 's'
-        self.maze[(width - 1, random.randrange(1, height - 1, 2))] = 'e'
+        if random.getrandbits(1):
+            self.maze[(random.randrange(1, height - 1, 2), 0)] = 's'
+            self.maze[(random.randrange(1, height - 1, 2), height - 1)] = 'e'
+        else:
+            self.maze[(0, random.randrange(1, height - 1, 2))] = 's'
+            self.maze[(width - 1, random.randrange(1, height - 1, 2))] = 'e'
         maze = self.maze.copy()
         self.maze.clear()
         return Maze(width, height, maze, seed)

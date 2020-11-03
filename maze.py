@@ -39,14 +39,14 @@ class Maze:
             if char == request:
                 yield coord
 
-    def get_neighbours(self, current, radius, step, char=0):
+    def get_neighbours(self, current, radius, angle=90, char=0):
         """return the squares in radius of the centered one"""
         neighbours = []
-        angle = 0
-        while angle < 360:
-            coord = (current[0] + radius*round(cos(radians(angle))),
-                     current[1] + radius*round(sin(radians(angle))))
-            angle += step
+        compass = 0
+        while compass < 360:
+            coord = (current[0] + radius*round(cos(radians(compass))),
+                     current[1] + radius*round(sin(radians(compass))))
+            compass += angle
             if coord in self.maze and self.maze[coord] == char:
                 neighbours.append(coord)
         return neighbours
@@ -78,7 +78,7 @@ class Maze:
         marker = 1
         while current != end:
             neighbours = self.get_neighbours(current, self.square_size,
-                                             90, ' ')
+                                             char=' ')
             if len(neighbours) == 1:
                 self.maze[current] = marker
                 current = neighbours[0]
