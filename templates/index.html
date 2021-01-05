@@ -37,11 +37,11 @@
       <input class="button" type="submit" value="Générer" />
     </form>
     <p>{{ maze.square_x }} X {{ maze.square_y }}</p>
-    {% if seed %}
+    {% if maze.seed %}
       <p>Graine = {{ maze.seed }}</p>
     {% endif %}
-    <div>
-      <svg id="maze" width="{{ maze.width }}" height="{{ maze.height }}">
+    <div id="maze">
+      <svg width="{{ maze.width }}" height="{{ maze.height }}">
         {% for coord, value in maze.maze.items() %}
           {% if value == '#' %}
               <rect class="wall" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>

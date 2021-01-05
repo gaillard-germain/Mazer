@@ -10,7 +10,7 @@ function showPath() {
   } else {
     button.innerHTML = 'Cacher solution';
     for (element of path) {
-      element.style.fill = "#b1cbe2";
+      element.style.fill = "#78b9ec";
     }
   }
 }

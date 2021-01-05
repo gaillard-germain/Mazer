@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
 body {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Comfortaa', sans-serif;
   margin: 0 auto;
   text-align: center;
 }
@@ -73,9 +73,18 @@ label {
 
 .button {
   margin-top: 1em;
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 1em;
+  background-color: #d1d1d1;
+  border-radius: 20px;
+  width: 10em;
+  height: 2em;
 }
+
+.button:hover {
+  background-color: #e4e4e4;
+}
+
 
 #maze {
   margin: 1em;
@@ -91,6 +100,10 @@ label {
 
 .path {
   fill: white;
+}
+
+.highlight {
+  fill: blue;
 }
 
 #show {
