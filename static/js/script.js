@@ -7,13 +7,13 @@ button.addEventListener('click', function() {
     hidden = false;
     button.value = 'Cacher solution';
     for (element of path) {
-      element.style.fill = "#78b9ec";
+      element.classList.replace("corridor", "highlight");
     }
   } else {
     hidden = true;
     button.value = 'Voir solution';
     for (element of path) {
-      element.style.fill = "white";
+      element.classList.replace("highlight", "corridor");
     }
   }
 });

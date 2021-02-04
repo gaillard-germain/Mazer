@@ -98,12 +98,8 @@ label {
   fill: white;
 }
 
-.path {
-  fill: white;
-}
-
 .highlight {
-  fill: blue;
+  fill: #5dbde5;
 }
 
 #show {

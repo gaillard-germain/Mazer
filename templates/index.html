@@ -46,7 +46,7 @@
           {% if value == '#' %}
               <rect class="wall" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
           {% elif value == '.' %}
-              <rect class="path" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
+              <rect class="corridor path" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
           {% else %}
               <rect class="corridor" x="{{ coord[0] }}" y="{{ coord[1] }}" width="10" height="10"/>
           {% endif %}
