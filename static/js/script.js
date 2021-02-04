@@ -1,16 +1,19 @@
-function showPath() {
-  var button = document.getElementById("show")
-  var path = document.getElementsByClassName("path");
+let hidden = true;
+let button = document.getElementById("show");
+let path = document.getElementsByClassName("path");
 
-  if (button.innerHTML === 'Cacher solution') {
-    button.innerHTML = 'Voir solution';
-    for (element of path) {
-      element.style.fill = "white";
-    }
-  } else {
-    button.innerHTML = 'Cacher solution';
+button.addEventListener('click', function() {
+  if (hidden) {
+    hidden = false;
+    button.value = 'Cacher solution';
     for (element of path) {
       element.style.fill = "#78b9ec";
     }
+  } else {
+    hidden = true;
+    button.value = 'Voir solution';
+    for (element of path) {
+      element.style.fill = "white";
+    }
   }
-}
+});
