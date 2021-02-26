@@ -1,1 +1,1 @@
-web: gunicorn mazzer_app:app
+web: gunicorn mazer_app:app
