@@ -3,11 +3,11 @@ var hidden = true;
 $('#solution').on('click', function(event) {
   if (hidden) {
     hidden = false;
-    $(this).val('Cacher solution');
+    $(this).val('Hide solution');
     $('.path').addClass('highlight').removeClass('corridor');
   } else {
     hidden = true;
-    $(this).val('Voir solution');
+    $(this).val('Show solution');
     $('.path').addClass('corridor').removeClass('highlight');
   }
 });
@@ -15,7 +15,7 @@ $('#solution').on('click', function(event) {
 $('form').on('submit', function(event) {
   if (!hidden) {
     hidden = true;
-    $('#solution').val('voir solution');
+    $('#solution').val('Show solution');
   }
   $.ajax({
     url: '/gen',
