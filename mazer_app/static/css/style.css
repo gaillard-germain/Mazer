@@ -85,7 +85,6 @@ label {
   background-color: #e4e4e4;
 }
 
-
 #maze {
   margin: 1em;
 }
@@ -102,6 +101,6 @@ label {
   fill: #5dbde5;
 }
 
-#show {
+#solution {
   margin-bottom: 5em;
 }

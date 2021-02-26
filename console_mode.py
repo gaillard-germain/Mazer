@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# test.py
+# console_mode.py
 # Author: Germain GAILLARD <gaillard.germain@gmail.com>
 # Version: 0.1
 # License: MIT
 
-from mazer import Mazer
+from mazer_app import Mazer
 
 
 def command():

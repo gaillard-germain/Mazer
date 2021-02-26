@@ -8,7 +8,7 @@
 
 import random
 from math import cos, sin, radians
-from maze import Maze
+from mazer_app import Maze
 
 
 class Mazer:

@@ -70,6 +70,23 @@ class Maze:
                     file.write(line + '\n')
                     line = ''
 
+    def get_svg_tag(self):
+        """Returns a html svg tag"""
+        tag = "<svg width='{}' height='{}'>".format(self.width, self.height)
+        rect_tag = "<rect class='{}' x='{}' y='{}' width='10' height='10'/>"
+        for coord, char in self.maze.items():
+            if char == '#':
+                rect = rect_tag.format('wall', coord[0], coord[1])
+                tag += rect
+            elif char == '.':
+                rect = rect_tag.format('corridor path', coord[0], coord[1])
+                tag += rect
+            else:
+                rect = rect_tag.format('corridor', coord[0], coord[1])
+                tag += rect
+        tag += "</svg>"
+        return tag
+
     def solve(self):
         """Solve the maze (added '.' on the path)"""
         current = next(self.get_coord('s'))
