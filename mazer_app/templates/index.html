@@ -18,20 +18,22 @@
     <form class="form" action="" method="post">
       <p>Select the labyrinth's attributs</p>
       <div id="attributs">
-        <div class="text_att">
+        <div class="att_box">
           <label for="seed">Seed</label>
-          <input id="seed" type="text" name="seed" value="" placeholder="Optional"/>
+          <div class="att_subbox">
+            <input id="seed" type="text" name="seed" value="" placeholder="optional"/>
+          </div>
         </div>
-        <div class="num_att">
+        <div class="att_box">
           <label for="width">Width</label>
-          <div class="num_input">
+          <div class="att_subbox">
             <input id="width" type="number" name="width" value="55" min="3" max="180" step="2" required/>
             <p>Squares</p>
           </div>
         </div>
-        <div class="num_att">
+        <div class="att_box">
         <label for="height">Height</label>
-          <div class="num_input">
+          <div class="att_subbox">
             <input id="height" type="number" name="height" value="55" min="3" max="90" step="2" required/>
             <p>Squares</p>
           </div>

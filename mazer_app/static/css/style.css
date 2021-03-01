@@ -37,7 +37,7 @@ form {
   flex-wrap: wrap;
 }
 
-.text_att {
+.att_box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,15 +45,13 @@ form {
   margin: 0 1em;
 }
 
-.num_att {
+.att_subbox {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  margin: 0 1em;
 }
 
-label {
+.att_box label {
   margin: 0.5em 0;
   padding: 0.2em;
   color: darkgrey;
@@ -62,24 +60,33 @@ label {
   background-color: #e8e8e8;
 }
 
-.text_att input {
+.att_subbox p {
+  margin: 0;
+  padding-left: 0.2em;
+  font-style: oblique;
+  font-size: 0.8em;
+}
+
+#seed {
   width: 10em;
-  margin: 0.2em 0;
 }
 
-.num_input {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.num_input input {
+#width, #height {
   width: 3em;
 }
 
-.num_input p {
-  font-style: oblique;
-  font-size: 0.8em;
+#seed, #width, #height {
+  font-size: 16px;
+  margin: 0.2em;
+  padding: 0.2em;
+  border: 1px solid darkgrey;
+  border-radius: 5px;
+}
+
+#seed:focus, #width:focus, #height:focus {
+  font-size: 16px;
+  outline-width: thin;
+  outline-color: #509ccf;
 }
 
 .button {
@@ -87,20 +94,17 @@ label {
   font-family: 'Comfortaa', sans-serif;
   background-color: #d1d1d1;
   border-radius: 20px;
+  border: 2px outset #e4e4e4;
+  font-size: 1em;
   width: 10em;
   height: 2em;
+  outline: none;
 }
 
 .button:hover {
   background-color: #e4e4e4;
-}
-
-input {
-  font-size: 16px;
-}
-
-input:focus {
-  font-size: 16px;
+  color: white;
+  text-shadow: 0 0 4px grey;
 }
 
 #dots {
