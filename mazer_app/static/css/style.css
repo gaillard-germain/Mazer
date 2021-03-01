@@ -96,8 +96,51 @@ label {
   background-color: #e4e4e4;
 }
 
+#dots {
+  display: none;
+}
+
+.dot {
+  display: inline-block;
+  background-color: black;
+  width: 1em;
+  height: 1em;
+  margin: 0.2em;
+  animation: loading 2s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.dot:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.dot:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.dot:nth-child(6) {
+  animation-delay: 1s;
+}
+
+@keyframes loading {
+  0%, 100% {
+    transform: scale(0.2);
+    background-color: lightgrey;
+  }
+  50% {
+    transform: scale(1);
+    background-color: black;
+  }
+}
+
 #maze {
-  font-size: calc(10px + 0.5vw);
   margin: 1em;
   overflow-x: auto;
   overflow-y: hidden;

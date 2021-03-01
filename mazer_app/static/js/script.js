@@ -13,8 +13,15 @@ $('#solution').on('click', function(event) {
 });
 
 $('form').on('submit', function(event) {
-  var fontSize = $('#maze').css('fontSize');
-  fontSize = parseInt(fontSize.split('px')[0]/2);
+  var size = Math.floor(($(window).width()/100*0.25)+5);
+  var $dots = $('#dots')
+
+  if ($('#maze').has('svg')) {
+    $('#maze svg').remove();
+  }
+
+  $(dots).show();
+  
   if (!hidden) {
     hidden = true;
     $('#solution').val('Show solution');
@@ -25,14 +32,12 @@ $('form').on('submit', function(event) {
       seed: $('#seed').val(),
       width: $('#width').val(),
       height: $('#height').val(),
-      size: fontSize
+      size: size
     },
     type: 'POST'
     })
   .done(function(data) {
-    if ($('#maze').has('svg')) {
-      $('#maze svg').remove();
-    }
+    $(dots).hide();
     $('#maze').append(data);
   });
   event.preventDefault();
