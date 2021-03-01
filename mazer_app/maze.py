@@ -73,16 +73,16 @@ class Maze:
     def get_svg_tag(self):
         """Returns a html svg tag"""
         tag = "<svg width='{}' height='{}'>".format(self.width, self.height)
-        rect_tag = "<rect class='{}' x='{}' y='{}' width='10' height='10'/>"
+        rect_tag = "<rect class='{0}' x='{1}' y='{2}' width='{3}' height='{3}'/>"
         for coord, char in self.maze.items():
             if char == '#':
-                rect = rect_tag.format('wall', coord[0], coord[1])
+                rect = rect_tag.format('wall', coord[0], coord[1], self.square_size)
                 tag += rect
             elif char == '.':
-                rect = rect_tag.format('corridor path', coord[0], coord[1])
+                rect = rect_tag.format('corridor path', coord[0], coord[1], self.square_size)
                 tag += rect
             else:
-                rect = rect_tag.format('corridor', coord[0], coord[1])
+                rect = rect_tag.format('corridor', coord[0], coord[1], self.square_size)
                 tag += rect
         tag += "</svg>"
         return tag

@@ -97,6 +97,7 @@ label {
 }
 
 #maze {
+  font-size: calc(10px + 0.5vw);
   margin: 1em;
   overflow-x: auto;
   overflow-y: hidden;

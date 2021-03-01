@@ -24,7 +24,8 @@ def gen():
     seed = request.form['seed']
     width = request.form['width']
     height = request.form['height']
+    size = request.form['size']
     maze = mazer.gen(int(width), int(height), seed)
-    maze.set_square(10)
     maze.solve()
+    maze.set_square(int(size))
     return maze.get_svg_tag()

@@ -13,6 +13,8 @@ $('#solution').on('click', function(event) {
 });
 
 $('form').on('submit', function(event) {
+  var fontSize = $('#maze').css('fontSize');
+  fontSize = parseInt(fontSize.split('px')[0]/2);
   if (!hidden) {
     hidden = true;
     $('#solution').val('Show solution');
@@ -22,7 +24,8 @@ $('form').on('submit', function(event) {
     data: {
       seed: $('#seed').val(),
       width: $('#width').val(),
-      height: $('#height').val()
+      height: $('#height').val(),
+      size: fontSize
     },
     type: 'POST'
     })
