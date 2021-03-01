@@ -98,6 +98,8 @@ label {
 
 #maze {
   margin: 1em;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .wall {
@@ -117,17 +119,19 @@ label {
 }
 
 footer {
-  padding: 0 0.5em;
+  padding: 0.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.8em;
   background-color: #f0f0f0;
   border-top: 2px solid #dcdcdc;
 }
 
 .links {
   display: flex;
-  margin: 1em;
+  margin: 0.5em;
+  padding: 0.5em;
 }
 
 .linkicon {
@@ -135,4 +139,10 @@ footer {
   margin: 0 0.5em;
   width: 2em;
   height: 2em;
+}
+
+@media screen and (max-width: 640px) {
+  footer {
+    flex-direction: column;
+  }
 }
