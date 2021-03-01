@@ -85,7 +85,6 @@ label {
 .button {
   margin-top: 1em;
   font-family: 'Comfortaa', sans-serif;
-  font-size: 1em;
   background-color: #d1d1d1;
   border-radius: 20px;
   width: 10em;
@@ -94,6 +93,14 @@ label {
 
 .button:hover {
   background-color: #e4e4e4;
+}
+
+input {
+  font-size: 16px;
+}
+
+input:focus {
+  font-size: 16px;
 }
 
 #dots {
