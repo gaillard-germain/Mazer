@@ -4,7 +4,7 @@ Mazer is a random maze generator, made with python3 and Flask Framework.
 ## Heroku app
 You can try Mazer here: https://sp-mazer.herokuapp.com/
 
-- choose width and height for the maze (min = 3, max = 159).
+- choose width and height for the maze (min = 3, max = 107).
 - seed is optional.
 - click the Generate button to generate the labyrinth.
 - click the Solution button at the bottom to show the solution path.
