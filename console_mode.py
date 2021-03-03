@@ -24,14 +24,14 @@ def main():
     txt = False
     json = False
     print("Welcome to Mazer a random maze generator")
-    print("! width and height must be odd numbers !\n")
+    print("! width and height must numbers between 3 and 159 !\n")
 
     while True:
         if com == 'quit':
             break
         elif com == 'gen':
-            x = input("Enter maze width (31): ")
-            y = input("Enter maze height (31): ")
+            x = input("Enter maze width (55): ")
+            y = input("Enter maze height (55): ")
             seed = input("Enter a seed (optional) : ")
             maze = mazer.gen(x, y, seed)
             maze.show()

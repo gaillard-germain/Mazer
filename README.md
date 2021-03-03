@@ -4,13 +4,16 @@ Mazer is a random maze generator, made with python3 and Flask Framework.
 ## Heroku app
 You can try Mazer here: https://sp-mazer.herokuapp.com/
 
-- choose width and height for the maze.
+- choose width and height for the maze (min = 3, max = 159).
 - seed is optional.
 - click the Generate button to generate the labyrinth.
 - click the Solution button at the bottom to show the solution path.
 
 ## Console mode
 Launch console_mode.py to run Mazer in a console.
+
+- enter width and height for the maze (min = 3, max = 159).
+- seed is optional.
 
 Console Commands are :
 - **quit** : to quit the program.

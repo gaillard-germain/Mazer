@@ -49,23 +49,26 @@ class Mazer:
                 return coord
         return None
 
-    def check_odd(self, width, height):
-        """Check if width and height are odd numbers"""
+    def check_valid(self, num, name):
+        """Check if num is a valid numbers"""
         try:
-            width, height = int(width), int(height)
-            if width % 2 == 0:
-                width += 1
-            if height % 2 == 0:
-                height += 1
-            return width, height
+            num = int(num)
+            if num < 3 or num > 159:
+                print('\nUnexpected values for {} !'.format(name))
+                print('Setting {} to default value (55)\n'.format(name))
+                num = 55
+            elif num % 2 == 0:
+                num += 1
+            return num
         except ValueError:
-            print('\nUnexpected values for width and height !')
-            print('Generating default maze : 31 x 31\n')
-            return 31, 31
+            print('\nUnexpected values for {} !'.format(name))
+            print('Setting {} to default value (55)\n'.format(name))
+            return 55
 
     def gen(self, width, height, seed=None):
         """Generate the maze"""
-        width, height = self.check_odd(width, height)
+        width = self.check_valid(width, 'width')
+        height = self.check_valid(height, 'height')
         if seed:
             random.seed(seed)
         for y in range(height):
