@@ -16,7 +16,10 @@ Console Commands are :
 - **quit** : to quit the program.
 - **gen** : to generate another maze.
 - **solve** : to solve the maze.
-- **save** : to create a txt file of the maze (! the previous will be over-written).
+- **txt** : to create a txt file of the maze (! the previous will be over-written).
+- **json** : to create a json file of the maze (! the previous will be over-written).
+
+Note: If you want the solution in txt or json file, solve the maze before.
 
 ## Localhost mode
 Fork it, clone it and create a virtual env.

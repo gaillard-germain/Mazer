@@ -7,6 +7,7 @@
 # License: MIT
 
 from math import cos, sin, radians
+import json
 
 
 class Maze:
@@ -69,6 +70,22 @@ class Maze:
                 if coord[0] / self.square_size == self.width - 1:
                     file.write(line + '\n')
                     line = ''
+
+    def export_json(self):
+        """Save the Maze in a json file"""
+        json_maze = {"walls": [], "corridors": [], "path": [], "doors": []}
+        for coord, char in self.maze.items():
+            if char == '#':
+                json_maze["walls"].append(list(coord))
+            elif char == ' ':
+                json_maze["corridors"].append(list(coord))
+            elif char == '.':
+                json_maze["path"].append(list(coord))
+            else:
+                json_maze["doors"].append(list(coord))
+        with open('maze.json', 'w') as file:
+            json.dump(json_maze, file)
+
 
     def get_svg_tag(self):
         """Returns a html svg tag"""

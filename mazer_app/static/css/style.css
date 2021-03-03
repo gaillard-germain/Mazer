@@ -103,8 +103,6 @@ form {
 
 .button:hover {
   background-color: #e4e4e4;
-  color: white;
-  text-shadow: 0 0 4px grey;
 }
 
 #dots {

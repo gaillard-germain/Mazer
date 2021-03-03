@@ -11,7 +11,8 @@ from mazer_app import Mazer
 
 def command():
     print("\nEnter solve to see the path to the exit")
-    print("Enter save to save the maze in a .txt file")
+    print("Enter txt to save the maze in a .txt file")
+    print("Enter json to save the maze in a .json file")
     print("Enter gen to generate an other one")
     print("Enter quit to quit\n")
     return input(">>> ").lower()
@@ -20,7 +21,8 @@ def command():
 def main():
     mazer = Mazer()
     com = 'gen'
-    saved = False
+    txt = False
+    json = False
     print("Welcome to Mazer a random maze generator")
     print("! width and height must be odd numbers !\n")
 
@@ -33,19 +35,28 @@ def main():
             seed = input("Enter a seed (optional) : ")
             maze = mazer.gen(x, y, seed)
             maze.show()
-            saved = False
+            txt = False
+            json = False
             com = command()
         elif com == 'solve':
             maze.solve()
             maze.show()
             com = command()
-        elif com == 'save':
-            if saved:
-                print("\nmaze already saved !\n")
+        elif com == 'txt':
+            if txt:
+                print("\nmaze.txt already saved !\n")
             else:
                 maze.export_txt()
-                saved = True
+                txt = True
                 print("\nMaze saved as maze.txt")
+            com = command()
+        elif com == 'json':
+            if json:
+                print("\nmaze.json already saved !\n")
+            else:
+                maze.export_json()
+                json = True
+                print("\nMaze saved as maze.json")
             com = command()
         else:
             print("\nWrong entry ! Please enter one of the command below:")
