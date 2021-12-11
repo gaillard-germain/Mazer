@@ -1,6 +1,8 @@
 # Mazer  
 Mazer is a random maze generator, made with python3 and Flask Framework.
 
+![Mazer screenshot](mazer.png "Mazer screenshot")
+
 ## Heroku app
 You can try Mazer here: https://sp-mazer.herokuapp.com/
 
